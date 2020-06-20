@@ -20,7 +20,7 @@ public class Registration_POSTApi {
 
 
     /**
-     * Pay ticket POST API
+     * Registration POST API
      * Response code - 200
      * Check for null example
      */
@@ -28,17 +28,18 @@ public class Registration_POSTApi {
 
 
     @Test
-    public void PayTicket_api_200(){
+    public void Registration_api_200(){
         RequestSpecification request = RestAssured.given();
 
-        String body = "{ \"remember_token\": \"YguKQVLGiEJbqZORmlCbRkngzTulqdfRPHYaUMknRXtmnLLDEyfVyVKwMKKCVANpdRLGnaSYsgQYkIyjXOJJlVBECkmQycWdZpjktvURfeQsYLtmgSctAFyyhJZRmEnZkyxyatNaBHYixkUcmcHYNuTjxUzGjfLRCsTDWcjQtzcfinLKXJmXtEdNfEoZVmnnbzOhBKZUgCqIQqifLUCsIDpcPmnmnPjsugtGFqYZSDquNIxIJIFbHPPyxpMQtse\"," +
-                "\"payment_method\": \"wallet\"," +
-                "\"order_id\": \"592\"}";
+        String body = "{ \"remember_token\": \"J9EIxpNiEISE3WU1kO1gWrNP6I7FlNp2JAmUzHVmXWWRawGYYtmgWeRfqLJC\"," +
+                "\"name\": \"Arnab\"," +
+                "\"mobile\": \"01678242969\"," +
+                "\"type\": \"customer\"}";
 
         request.header("Content-Type", "application/json");
         request.body(body);
 
-        request.post("/v2/affiliates/39169/transport/bus-ticket/pay").
+        request.post("/v2/partners/233/register").
                 then().statusCode(200).assertThat()
                 .body("code", equalTo(200));
 
@@ -47,30 +48,31 @@ public class Registration_POSTApi {
 
 
     /**
-     * Pay ticket POST API
+     * Registration POST API
      * Response code - 500
      */
 
 
 
     @Test
-    public void PayTicket_api_500(){
+    public void Registration_api_500(){
         RequestSpecification request = RestAssured.given();
 
-        String body = "{ \"remember_token\": \"YguKQVLGiEJbqZORmlCbRkngzTulqdfRPHYaUMknRXtmnLLDEyfVyVKwMKKCVANpdRLGnaSYsgQYkIyjXOJJlVBECkmQycWdZpjktvURfeQsYLtmgSctAFyyhJZRmEnZkyxyatNaBHYixkUcmcHYNuTjxUzGjfLRCsTDWcjQtzcfinLKXJmXtEdNfEoZVmnnbzOhBKZUgCqIQqifLUCsIDpcPmnmnPjsugtGFqYZSDquNIxIJIFbHPPyxpMQtse\"," +
-                "\"payment_method\": \"wallet\"," +
-                "\"order_id\": \"587\"}";
+        String body = "{ \"remember_token\": \"J9EIxpNiEISE3WU1kO1gWrNP6I7FlNp2JAmUzHVmXWWRawGYYtmgWeRfqLJC\"," +
+                "\"name\": \"Arnab\"," +
+                "\"mobile\": \"01678242969\"," +
+                "\"type\": \"customer\"}";
 
         request.header("Content-Type", "application/json");
         request.body(body);
 
-        request.post("/v2/affiliates/39169/transport/bus-ticket/pay").
+        request.post("/v2/partners/233/register").
                 then().statusCode(200).assertThat()
                 .body("code", equalTo(500));
     }
 
     /**
-     * Pay ticket POST API
+     * Registration POST API
      * Response code - 400
      * message: The seat class field is required.
      */
@@ -78,7 +80,7 @@ public class Registration_POSTApi {
 
 
     @Test
-    public void PayTicket_api_400(){
+    public void Registration_api_400(){
         RequestSpecification request = RestAssured.given();
 
         String body =// "{ \"remember_token\": \"YguKQVLGiEJbqZORmlCbRkngzTulqdfRPHYaUMknRXtmnLLDEyfVyVKwMKKCVANpdRLGnaSYsgQYkIyjXOJJlVBECkmQycWdZpjktvURfeQsYLtmgSctAFyyhJZRmEnZkyxyatNaBHYixkUcmcHYNuTjxUzGjfLRCsTDWcjQtzcfinLKXJmXtEdNfEoZVmnnbzOhBKZUgCqIQqifLUCsIDpcPmnmnPjsugtGFqYZSDquNIxIJIFbHPPyxpMQtse\"," +
@@ -95,7 +97,7 @@ public class Registration_POSTApi {
 
 
     /**
-     * Pay ticket POST API
+     * Registration POST API
      * Response code - 403
      * message: You're not authorized to access this user.
      */
@@ -103,25 +105,26 @@ public class Registration_POSTApi {
 
 
     @Test
-    public void PayTicket_api_403(){
+    public void Registration_api_403(){
 
         RequestSpecification request = RestAssured.given();
 
-        String body = "{ \"remember_token\": \"YguKQVLGiEJbqZORmlCbRkngzTulqdfRPHYaUMknRXtmnLLDEyfVyVKwMKKCVANpdRLGnaSYsgQYkIyjXOJJlVBECkmQycWdZpjktvURfeQsYLtmgSctAFyyhJZRmEnZkyxyatNaBHYixkUcmcHYNuTjxUzGjfLRCsTDWcjQtzcfinLKXJmXtEdNfEoZVmnnbzOhBKZUgCqIQqifLUCsIDpcPmnmnPjsugtGFqYZSDquNIxIJIFbHPPyxpMQtse\"," +
-                "\"payment_method\": \"wallet\"," +
-                "\"order_id\": \"587\"}";
+        String body = "{ \"remember_token\": \"J9EIxpNiEISE3WU1kO1gWrNP6I7FlNp2JAmUzHVmXWWRawGYYtmgWeRfqLJC\"," +
+                "\"name\": \"Arnab\"," +
+              //  "\"mobile\": \"01678242969\"," +
+                "\"type\": \"customer\"}";
 
         request.header("Content-Type", "application/json");
         request.body(body);
 
-        request.post("/v2/affiliates/39168/transport/bus-ticket/pay").
+        request.post("/v2/partners/233/register").
                 then().statusCode(200).assertThat()
                 .body("code", equalTo(403));
     }
 
 
     /**
-     * Pay ticket POST API
+     * Registration POST API
      * Response code - 404
      * message: User not found.
      */
@@ -129,17 +132,18 @@ public class Registration_POSTApi {
 
 
     @Test
-    public void PayTicket_api_404(){
+    public void Registration_api_404(){
         RequestSpecification request = RestAssured.given();
 
-        String body = "{ \"remember_token\": \"GguKQVLGiEJbqZORmlCbRkngzTulqdfRPHYaUMknRXtmnLLDEyfVyVKwMKKCVANpdRLGnaSYsgQYkIyjXOJJlVBECkmQycWdZpjktvURfeQsYLtmgSctAFyyhJZRmEnZkyxyatNaBHYixkUcmcHYNuTjxUzGjfLRCsTDWcjQtzcfinLKXJmXtEdNfEoZVmnnbzOhBKZUgCqIQqifLUCsIDpcPmnmnPjsugtGFqYZSDquNIxIJIFbHPPyxpMQtse\"," +
-                "\"payment_method\": \"wallet\"," +
-                "\"order_id\": \"587\"}";
+        String body = "{ \"remember_token\": \"J9EIxpNiEISE3WU1kO1gWrNP6I7FlNp2JAmUzHVmXWWRawGYYtmgWeRfqLJD\"," +
+                "\"name\": \"Arnab\"," +
+                "\"mobile\": \"01678242969\"," +
+                "\"type\": \"customer\"}";
 
         request.header("Content-Type", "application/json");
         request.body(body);
 
-        request.post("/v2/affiliates/39169/transport/bus-ticket/pay").
+        request.post("/v2/partners/233/register").
                 then().statusCode(200).assertThat()
                 .body("code", equalTo(404));
 
@@ -147,7 +151,7 @@ public class Registration_POSTApi {
 
 
     /**
-     * Pay ticket POST API
+     * Registration POST API
      * Response code - 405
      * message: User not found.
      */
@@ -155,24 +159,25 @@ public class Registration_POSTApi {
 
 
     @Test
-    public void PayTicket_api_405(){
+    public void Registration_api_405(){
         RequestSpecification request = RestAssured.given();
 
-        String body = "{ \"remember_token\": \"YguKQVLGiEJbqZORmlCbRkngzTulqdfRPHYaUMknRXtmnLLDEyfVyVKwMKKCVANpdRLGnaSYsgQYkIyjXOJJlVBECkmQycWdZpjktvURfeQsYLtmgSctAFyyhJZRmEnZkyxyatNaBHYixkUcmcHYNuTjxUzGjfLRCsTDWcjQtzcfinLKXJmXtEdNfEoZVmnnbzOhBKZUgCqIQqifLUCsIDpcPmnmnPjsugtGFqYZSDquNIxIJIFbHPPyxpMQtse\"," +
-                "\"payment_method\": \"wallet\"," +
-                "\"order_id\": \"587\"}";
+        String body = "{ \"remember_token\": \"J9EIxpNiEISE3WU1kO1gWrNP6I7FlNp2JAmUzHVmXWWRawGYYtmgWeRfqLJC\"," +
+                "\"name\": \"Arnab\"," +
+                "\"mobile\": \"01678242969\"," +
+                "\"type\": \"customer\"}";
 
         request.header("Content-Type", "application/json");
         request.body(body);
 
-        request.put("/v2/affiliates/39169/transport/bus-ticket/pay").
+        request.put("/v2/partners/233/register").
                 then().statusCode(405);
     }
 
 
 
     /**
-     * Book ticket POST API
+     * Registration POST API
      * Check for null example
      */
 
@@ -182,14 +187,15 @@ public class Registration_POSTApi {
 
         RequestSpecification request = RestAssured.given();
 
-        String body = "{ \"remember_token\": \"YguKQVLGiEJbqZORmlCbRkngzTulqdfRPHYaUMknRXtmnLLDEyfVyVKwMKKCVANpdRLGnaSYsgQYkIyjXOJJlVBECkmQycWdZpjktvURfeQsYLtmgSctAFyyhJZRmEnZkyxyatNaBHYixkUcmcHYNuTjxUzGjfLRCsTDWcjQtzcfinLKXJmXtEdNfEoZVmnnbzOhBKZUgCqIQqifLUCsIDpcPmnmnPjsugtGFqYZSDquNIxIJIFbHPPyxpMQtse\"," +
-                "\"payment_method\": \"wallet\"," +
-                "\"order_id\": \"587\"}";
+        String body = "{ \"remember_token\": \"J9EIxpNiEISE3WU1kO1gWrNP6I7FlNp2JAmUzHVmXWWRawGYYtmgWeRfqLJC\"," +
+                "\"name\": \"Arnab\"," +
+                "\"mobile\": \"01678242969\"," +
+                "\"type\": \"customer\"}";
 
         request.header("Content-Type", "application/json");
         request.body(body);
 
-        request.post("/v2/affiliates/39169/transport/bus-ticket/pay").
+        request.post("/v2/partners/233/register").
                 then().statusCode(200).assertThat()
                 .body("payment", not(equalTo(null)));
 
